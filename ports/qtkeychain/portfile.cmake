@@ -9,9 +9,13 @@ vcpkg_from_github(
 )
 
 # Opportunity to build without dependency on qt5-tools/qt5-declarative
+set(LIBSECRET_SUPPORT OFF)
 set(BUILD_TRANSLATIONS OFF)
 if("translations" IN_LIST FEATURES)
     set(BUILD_TRANSLATIONS ON)
+endif()
+if("libsecret" IN_LIST FEATURES)
+    set(LIBSECRET_SUPPORT ON)
 endif()
 
 vcpkg_cmake_configure(
@@ -21,6 +25,7 @@ vcpkg_cmake_configure(
         -DBUILD_WITH_QT6=OFF
         -DBUILD_TEST_APPLICATION=OFF
         -DBUILD_TRANSLATIONS=${BUILD_TRANSLATIONS}
+        -DLIBSECRET_SUPPORT=${LIBSECRET_SUPPORT}
 )
 vcpkg_cmake_install()
 
