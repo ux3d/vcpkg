@@ -16,21 +16,22 @@
     }
   ],
   "default-features": [
-    "translations", "libsecret"
+    "libsecret",
+    "translations"
   ],
   "features": {
+    "libsecret": {
+      "description": "Build qtkeychain with libsecret support",
+      "supports": "!(windows | uwp | osx)",
+      "dependencies": [
+        "libsecret"
+      ]
+    },
     "translations": {
       "description": "Build qtkeychain translations",
       "dependencies": [
         "qt5-tools"
       ]
-    },
-    "libsecret": {
-      "description": "Build qtkeychain with libsecret support",
-      "dependencies":[
-        "libsecret"
-      ],
-      "supports": "!(windows | uwp | osx)"
     }
   }
 }
